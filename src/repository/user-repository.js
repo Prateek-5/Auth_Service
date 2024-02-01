@@ -24,6 +24,28 @@ class UserRepository{
         }
     }
 
+    async getById(id){
+        try {
+            const response=await User.findByPk(id,{
+                attributes:['email','id']
+            })
+
+            return response;
+
+
+            /*
+                attributes:['email','id'] this is similar to select email,id from User 
+                without this we were technically doing select * from User 
+            
+            */
+
+
+        } catch (error) {
+            console.log("Something went wrong in the console layer");
+            throw error;
+        }
+    }
+
 
 
 
