@@ -4,7 +4,7 @@ const app=express();
 const bodyParser=require('body-parser');
 const apiRoutes=require('./routes/index')
 const userService=require('./services/user-service');
-
+const UserRepository=require('./repository/user-repository');
 const  prepareAndStartServer = () =>{
 
     app.listen(PORT,async ()=>{
@@ -13,6 +13,11 @@ const  prepareAndStartServer = () =>{
 
         app.use('/api',apiRoutes);
         
+        // const userrepos=new UserRepository();
+
+        // const repose=await userrepos.getByEmail('abc@gmail.com');
+        // console.log(repose);
+
 
 
 

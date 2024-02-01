@@ -1,3 +1,4 @@
+const { response } = require('express');
 const {User}=require('../models/index')
 
 class UserRepository{
@@ -46,7 +47,20 @@ class UserRepository{
         }
     }
 
-    
+    async getByEmail(userEmail){
+        try {
+            const responce=User.findOne({
+                where:{email:userEmail}
+            })
+            return responce;
+
+        } catch (error) {
+            console.log("Something went wronf in the repository layer");
+            throw error;
+        }
+    }
+
+
 
 
 
