@@ -3,7 +3,7 @@ const {PORT}=require('./config/serverConfig')
 const app=express();
 const bodyParser=require('body-parser');
 const apiRoutes=require('./routes/index')
-const UserRepository=require('./repository/user-repository')
+const userService=require('./services/user-service');
 
 const  prepareAndStartServer = () =>{
 
@@ -12,9 +12,8 @@ const  prepareAndStartServer = () =>{
         app.use(bodyParser.urlencoded({extended:true}));
 
         app.use('/api',apiRoutes);
-        // const userrepository=new UserRepository();
-        // const response=await userrepository.getById(2);
-        // console.log(response);
+        
+
 
 
 
