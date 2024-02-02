@@ -13,10 +13,10 @@ const  prepareAndStartServer = () =>{
 
         app.use('/api',apiRoutes);
         
-        const userrepos=new UserRepository();
+        // const userrepos=new UserRepository();
 
-        const repose=await userrepos.destroy(3);
-        console.log(repose);
+        // const repose=await userrepos.destroy(3);
+        // console.log(repose);
 
 
 

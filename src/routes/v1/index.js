@@ -7,8 +7,7 @@ const router=express.Router();
 
 router.post('/signup',AuthRequestValidator.validateAuth,UserController.create);
 router.post('/signin',AuthRequestValidator.validateAuth,UserController.signIn);
-
-
+router.get('/isAuthenticated',UserController.isAuthenticated);
 
 
 module.exports=router;

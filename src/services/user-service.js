@@ -3,6 +3,7 @@ const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');
 
 const UserRepository=require('../repository/user-repository');
+const { response } = require('express');
 class UserService{
 
     constructor()
@@ -52,6 +53,24 @@ class UserService{
             console.log("Something went wrong in the service layer");
             throw error;
 
+        }
+    }
+    async isAuthenticated(token){
+        try {
+            const reposnse=await this.verifyToken(token);
+            if(!reposnse){
+                throw{error:'Invalid token'}
+            }
+            const user=this.userrepository.getById(response.id);
+            if(!user){
+                throw{error:'No user with correspondind token exist'};
+            }
+
+            return user.id
+
+        } catch (error) {
+            console.log("Something went wrong in the service layer");
+            throw error;
         }
     }
 
