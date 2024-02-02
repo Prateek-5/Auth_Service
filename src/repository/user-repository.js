@@ -1,5 +1,5 @@
 const { response } = require('express');
-const {User}=require('../models/index')
+const {User,Role}=require('../models/index')
 
 class UserRepository{
 
@@ -57,6 +57,21 @@ class UserRepository{
 
         } catch (error) {
             console.log("Something went wronf in the repository layer");
+            throw error;
+        }
+    }
+    async isAdmin(userId) {
+        try {
+            console.log("hi");
+            const user = await User.findByPk(userId);
+            const adminRole = await Role.findOne({
+                where: {
+                    name: 'ADMIN'
+                }
+            });
+            return user.hasRole(adminRole);
+        } catch (error) {
+            console.log("Something went wrong on repository layer");
             throw error;
         }
     }

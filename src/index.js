@@ -6,6 +6,7 @@ const apiRoutes=require('./routes/index')
 const userService=require('./services/user-service');
 const UserRepository=require('./repository/user-repository');
 const db=require('./models/index');
+const {User,Role}=require('./models/index');
 
 const  prepareAndStartServer = () =>{
 
@@ -23,6 +24,9 @@ const  prepareAndStartServer = () =>{
         if(process.env.DB_SYNC) {
             db.sequelize.sync({alter: true});
         }
+
+        
+         
 
 
 
