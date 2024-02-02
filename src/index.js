@@ -5,6 +5,8 @@ const bodyParser=require('body-parser');
 const apiRoutes=require('./routes/index')
 const userService=require('./services/user-service');
 const UserRepository=require('./repository/user-repository');
+const db=require('./models/index');
+
 const  prepareAndStartServer = () =>{
 
     app.listen(PORT,async ()=>{
@@ -18,7 +20,9 @@ const  prepareAndStartServer = () =>{
         // const repose=await userrepos.destroy(3);
         // console.log(repose);
 
-
+        if(process.env.DB_SYNC) {
+            db.sequelize.sync({alter: true});
+        }
 
 
 
