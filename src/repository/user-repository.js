@@ -15,8 +15,9 @@ class UserRepository{
 
     async destroy(id){
         try {
+            console.log(id);
             const response=await User.destroy({
-                where:id
+                where:{id}
             })
             return true;
         } catch (error) {
